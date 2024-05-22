@@ -1,0 +1,53 @@
+{
+  // 컴파일러 옵션 지정
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./build/js",
+    "target": "ES6",
+    "noEmitOnError": false,
+    "module": "ESNext",
+    // 타입스크립트 컴파일러가 모듈을 찾는 방법
+    // classic (relative/ non-relative) / node(relative/ non-relative)
+    "moduleResolution": "Node",
+    "esModuleInterop": true,
+    // 컴파일할 때 사용할 라이브러리
+    // [] 상태일 경우 target에 따라 달라짐
+    // es3 => lib.d.ts / es5 => dom, es6, scripthost
+    "lib": ["ESNext", "DOM"],
+    // 엄격하게 타입을 체크
+    "strict": true,
+    "strictNullChecks": false,
+    // tsconfig.json과 동일한 폴더에서 시작하는 파일을 찾음
+    "baseUrl": "./",
+    "paths": {
+      // ../../../../ => @src/로 줄일 수 있음
+      "@src/*": ["src/*"]
+    },
+    "isolatedModules": true,
+    // 컴파일 시 주석 제거
+    "removeComments": true,
+    // javascript를 같이 사용할 수 있게 허용
+    "allowJs": true,
+    // allowJs와 함께 작동, 활성화 시 JavaScript 파일에 오류가 보고 됨
+    // 모든 JavaScript 파일의 맨 위에 // @ts-check를 포함하는 것과 같음
+    "checkJs": true,
+    // 파일의 이름을 대소문자 판별하게 하는 옵션
+    // test.ts 파일을 Test로 찾을 수 없음
+    "forceConsistentCasingInFileNames": true,
+    // TS파일을 JS로 컴파일하는 과정에서 JS파일과 함께 d.ts 선언 파일 생성
+    // 타입들만 따로 관리할 수 있는 선언 파일
+    "declaration": true
+  },
+
+  //컴파일할 개별 파일 목록(확장자 이름 필수)
+  // "files": ["node_modules/library/index.ts"],
+
+  // 컴파일러를 이용해서 변환할 폴더 경로를 지정
+  "include": ["./src/**/*.ts"],
+
+  // 컴파일러를 이용해서 변환하지 않을 폴더 경로를 지정
+  "exclude": ["node_modules", "dist"]
+
+  // 상속해서 사용할 다른 TS 구성파일 지정
+  // "extends": "main_config.json"
+}
